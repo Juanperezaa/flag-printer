@@ -1,21 +1,51 @@
 package ui;
+import model.flag;
+import threads.flagThread;
 
 public class main {
-	static String b = "\u001B[0m";       
-	static String negro = "\033[30m";
-	static String rojo = "\033[31m";
-	static String verde = "\033[32m";
-	static String amarillo = "\033[33m";
-	static String azul = "\033[34m";
-	static String magenta = "\033[35m";
-	static String celeste = "\033[36m";
-	static String blanco = "\033[37m";
-	        
-	static String fRojo = "\033[41m";
-	static String fVerde = "\033[42m";
-	static String fAmarillo = "\033[43m";
-	static String fAzul = "\033[44m";
-	static String fMagenta = "\033[45m";
-	static String fCeleste = "\033[46m";
-	static String fGris = "\033[47m";
-}
+	
+	private static String Yellow = "\033[43m";
+	private static  String Blue= "\033[44m";
+	private static  String Red = "\033[41m";
+	private static String end= "\u001b[";
+	private static  String reb = "\033[0m";
+    private String temp;
+    private int temp2;
+    private boolean temp3;
+	
+	 public static void Main(String[] args) throws InterruptedException {
+	        start();
+	        initialize();
+	        System.out.println(reb + "\n");
+	    }
+
+	   
+	    public static void initialize() throws InterruptedException {
+	        flag yellow = new flag(Yellow, 10);
+	        flag blue = new flag(Blue, 4);
+	        flag red = new flag(Red, 4);
+	        printer pY = new printer(yellow);
+	        printer pB = new printer(blue);
+	        printer pR = new printer(red);
+
+	        flagThread tYellow = new flagThread(pY, 8, 0);
+	        flagThread tBlue = new flagThread(pB, 45, 10);
+	        flagThread tRed = new flagThread(pR, 80, 14);
+
+	        tYellow.start();
+	        tBlue.start();
+	        tRed.start();
+
+	        tYellow.join();
+	        tBlue.join();
+	        tRed.join();
+
+	    }
+	    
+	    public static void start() {
+	        System.out.print(end+"0G"+end+"0d");
+	        System.out.print(end+"2J");
+	    }
+
+	}
+
