@@ -4,16 +4,16 @@ import threads.flagThread;
 
 public class main {
 	
-	private static String Yellow = "\033[43m";
-	private static  String Blue= "\033[44m";
-	private static  String Red = "\033[41m";
-	private static String end= "\u001b[";
-	private static  String reb = "\033[0m";
-    private String temp;
-    private int temp2;
-    private boolean temp3;
+	 static String Yellow = "\033[43m";
+	 static  String Blue= "\033[44m";
+	 static  String Red = "\033[41m";
+	 static String end= "\u001b[";
+	static  String reb = "\033[0m";
+     String temp;
+     int temp2;
+     boolean temp3;
 	
-	 public static void Main(String[] args) throws InterruptedException {
+	 public static void main(String[] args) throws InterruptedException{
 	        start();
 	        initialize();
 	        System.out.println(reb + "\n");
@@ -22,23 +22,25 @@ public class main {
 	   
 	    public static void initialize() throws InterruptedException {
 	        flag yellow = new flag(Yellow, 10);
-	        flag blue = new flag(Blue, 4);
-	        flag red = new flag(Red, 4);
 	        printer pY = new printer(yellow);
-	        printer pB = new printer(blue);
-	        printer pR = new printer(red);
-
-	        flagThread tYellow = new flagThread(pY, 8, 0);
-	        flagThread tBlue = new flagThread(pB, 45, 10);
-	        flagThread tRed = new flagThread(pR, 80, 14);
-
+	        flagThread tYellow = new flagThread(pY, 20, 0);
 	        tYellow.start();
-	        tBlue.start();
-	        tRed.start();
-
 	        tYellow.join();
+	        flag blue = new flag(Blue, 4);
+	        printer pB = new printer(blue);
+	        flagThread tBlue = new flagThread(pB, 80, 10);
+	        tBlue.start();
 	        tBlue.join();
+	        flag red = new flag(Red, 4);
+	        printer pR = new printer(red);
+	        flagThread tRed = new flagThread(pR, 120, 14);
+	        tRed.start();
 	        tRed.join();
+	       
+	       
+	       
+	       
+	       
 
 	    }
 	    

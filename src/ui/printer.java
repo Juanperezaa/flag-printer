@@ -3,9 +3,9 @@ package ui;
 import model.flag;
 
 public class printer {
-	private static String yellow = "\033[43m";
-	private static  String blue= "\033[44m";
-	private static  String red = "\033[41m";
+	private static String Yellow = "\033[43m";
+	private static  String Blue= "\033[44m";
+	private static  String Red = "\033[41m";
 	private static String end= "\u001b[";
 	private static  String reb = "\033[0m";
     private final flag bFlag;
@@ -34,9 +34,9 @@ public class printer {
         }
     } */
     
-    public void stop(long rate) {
+    public void stop(long limit) {
         try {
-            Thread.sleep(rate);
+            Thread.sleep(limit);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }

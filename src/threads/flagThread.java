@@ -4,11 +4,11 @@ package threads;
 import ui.printer;
 
 public class flagThread extends Thread {
-	private static String YELLOW = "\033[43m";
-	private static  String BLUE = "\033[44m";
-    private static String RED = "\033[41m";
-    private static  String ESC = "\u001b[";
-    private static String RESET = "\033[0m";
+	private static String Yellow = "\033[43m";
+	private static  String Blue = "\033[44m";
+    private static String Red = "\033[41m";
+    private static  String end = "\u001b[";
+    private static String reb = "\033[0m";
     private final printer printer;
     private final int timer;
     private final int latitude;
